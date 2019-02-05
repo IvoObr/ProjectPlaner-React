@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{@types/babel-plugin-syntax-jsx, @types/bcryptjs, @types/es-feature-detection, @types/express, @types/mongodb, @types/mongoose, @types/node, @types/react, @types/reduce-reducers, @types/redux-router, @types/redux-storage}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
+  </component>
+</project>
