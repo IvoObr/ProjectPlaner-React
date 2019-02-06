@@ -1,13 +1,13 @@
 export const createProject = (project) => {
     return(dispatch, getState) => {
-        // make async call to db
         let bodyObj = {
             ...project,
         };
 
         let init = {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
-                mode: "cors", // no-cors, cors, *same-origin
+            method: "POST",
+            mode: "cors",
+           // credentials: 'include',
             headers: {
             "Content-Type": "application/json",
         },
@@ -16,9 +16,22 @@ export const createProject = (project) => {
 
         fetch('http://localhost:3002/projects', init)
         .then(response => {
-            console.log('Projects', response);  
+            debugger
+            if (response.ok) {
+                console.log('Projects', response);
+                dispatch({type: 'CREATE_PROJECT', project});
+            } else {
+               let error = {
+                   status: response.status,
+                   statusText: response.statusText
+               };
+
+                dispatch({type: 'CREATE_PROJECT_ERROR', error});
+                console.log(`Request rejected with status ${response.status} - ${response.statusText}`);
+
+            }
         });
         
-        dispatch({type: 'CREATE_PROJECT', project});
+
     }
 };
