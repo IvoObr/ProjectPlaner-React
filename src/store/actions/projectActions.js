@@ -3,8 +3,6 @@ export const createProject = (project) => {
         // make async call to db
         let bodyObj = {
             ...project,
-            authorFirstName: 'I',
-            authorLastName: 'O'
         };
 
         let init = {
@@ -16,7 +14,7 @@ export const createProject = (project) => {
             body: JSON.stringify(bodyObj),
         };
 
-        fetch('http://localhost:3000/projects', init)
+        fetch('http://localhost:3002/projects', init)
         .then(response => {
             console.log('Projects', response);  
         });
