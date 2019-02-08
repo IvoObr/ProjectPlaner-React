@@ -1,30 +1,30 @@
-import {url, requestObject, responseHandle} from '../fetchConfig'
+import {actionTypes} from "./actionTypes";
 
-export const createProject = (project) => {
-    return(dispatch, getState) => {
-        let bodyObj = {
-            ...project,
-        };
+export const actions = {
+    startFetchProject: () => ({
+        type: actionTypes.START_FETCH_PROJECTS
+    }),
+    startFetchProjectSuccess: (data) => ({
+        type: actionTypes.START_FETCH_PROJECTS_SUCCESS,
+        payload: {data}
+    }),
+    startFetchProjectFailed: (error) => ({
+        type: actionTypes.START_FETCH_PROJECTS_FAILED,
+        payload: {error}
+    }),
 
-        requestObject.method =  'POST';
-        requestObject.body = JSON.stringify(bodyObj)
-        fetch(`${url}/projects`, requestObject)
-            .then(response => {
-                responseHandle(response, dispatch, 'CREATE_PROJECT');
-            }).catch(error => {
-            console.log(new Error(`Request rejected: ${error}`));
-        });
-    }
-};
+    createProject: (project) => ({
+        type: actionTypes.CREATE_PROJECT,
+        payload: {project}
+    }),
+    createProjectSuccess: (data) => ({
+        type: actionTypes.CREATE_PROJECT_SUCCESS,
+        payload: {data}
+    }),
+    createProjectFailed: (error) => ({
+        type: actionTypes.CREATE_PROJECT_FAILED,
+        payload: {error}
+    }),
 
-export const getProjects = () => {
-    return(dispatch, getState) => {
-        requestObject.method =  'GET';
-        fetch(`${url}/projects`, requestObject)
-            .then(response => {
-                responseHandle(response, dispatch, 'GET_ALL_PROJECTS');
-            }).catch(error => {
-            console.log(new Error(`Request rejected: ${error}`));
-        });
-    }
+
 };

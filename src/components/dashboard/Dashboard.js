@@ -2,17 +2,16 @@ import React, {Component} from 'react';
 import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
 import {connect} from "react-redux";
-import {getProjects} from "../../store/actions/projectActions";
+import {actions} from "../../store/actions/projectActions";
 
 class Dashboard extends Component {
 
     componentDidMount() {
-        this.props.getProjects();
+        this.props.startFetchProject();
     }
 
     render() {
         const {projects} = this.props;
-
         console.log('DASHBOARD', projects);
         return (
             <div className='dashboard container'>
@@ -31,14 +30,12 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-       projects: state.project.projects
+        projects: state.project.projects
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getProjects: () => dispatch(getProjects())
-    }
+const mapDispatchToProps = {
+    startFetchProject: actions.startFetchProject
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
