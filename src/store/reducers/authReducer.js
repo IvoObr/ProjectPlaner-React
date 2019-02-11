@@ -30,6 +30,7 @@ const authReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.LOGIN_USER_FAILED:
+            console.log('LOGIN_USER_FAILED');
             return loop(
                 {},
                 Cmd.none

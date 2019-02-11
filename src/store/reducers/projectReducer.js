@@ -17,6 +17,7 @@ export const projectReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.START_FETCH_PROJECTS_SUCCESS:
+            console.log('START_FETCH_PROJECTS_SUCCESS', action.payload);
             return loop(
                 {...state, projects: action.payload.data.projectDoc},
                 Cmd.none
