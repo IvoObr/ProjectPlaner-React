@@ -3,7 +3,11 @@ import {actionTypes} from "../actions/actionTypes";
 import {actions} from "../actions/userActions";
 import {login, logout, signup} from "../../utils/userService";
 
-let user = JSON.parse(localStorage.getItem('user'));
+let user = localStorage.getItem('user');
+if (user) {
+    user = JSON.parse(user);
+}
+
 const initState = user ? {loggedIn: true, user} : {};
 
 const authReducer = (state = initState, action) => {

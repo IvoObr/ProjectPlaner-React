@@ -1,12 +1,6 @@
 import axios from 'axios';
 
 const url = 'http://localhost:3002';
-let user = JSON.parse(localStorage.getItem('user'));
-const token = user && user.token;
-const headers = {
-    'x-auth': token || ''
-};
-
 
 export const login = (user) => {
     return axios.post(`${url}/users/login`, user).then(response => {
@@ -18,10 +12,17 @@ export const login = (user) => {
 };
 
 export const logout = (user) => {
-    return axios.delete(`${url}/users/token`, {headers, user}).then(response => {
-        localStorage.setItem('user', '');
-        return response.data
-    });
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const headers = {
+        'x-auth': token || null
+    };
+
+    if (token) {
+        return axios.delete(`${url}/users/token`, {headers, user}).then(response => {
+            localStorage.removeItem('user');
+            return response.data
+        });
+    }
 };
 
 export const signup = (user) => {
