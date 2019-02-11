@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {actions} from "../../store/actions/userActions";
+import {connect} from "react-redux";
 
 class SignUp extends Component {
     state = {
@@ -16,7 +18,8 @@ class SignUp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        this.props.signup(this.state);
+
     };
 
     render() {
@@ -57,4 +60,8 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = {
+    signup: actions.signup
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);

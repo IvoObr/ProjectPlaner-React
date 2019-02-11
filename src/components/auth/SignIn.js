@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {actions} from "../../store/actions/userActions";
 
 class SignIn extends Component {
     state = {
@@ -15,6 +17,7 @@ class SignIn extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log(this.state);
+        this.props.login(this.state);
     };
 
     render() {
@@ -36,12 +39,14 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
-
-
                 </form>
             </div>
         );
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = {
+    login: actions.login
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);

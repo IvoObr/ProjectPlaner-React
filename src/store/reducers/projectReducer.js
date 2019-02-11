@@ -1,6 +1,6 @@
 import {loop, Cmd} from 'redux-loop';
 import {actions} from "../actions/projectActions";
-import {fetchProjects, createProject} from "../../utils/apiCalls";
+import {fetchProjects, createProject} from "../../utils/projectService";
 import {actionTypes} from "../actions/actionTypes";
 
 const initState = {projects: []};
