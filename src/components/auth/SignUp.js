@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {actions} from "../../store/actions/userActions";
+import {actions} from "../../store/actions/authActions";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 class SignUp extends Component {
     state = {
@@ -23,6 +24,11 @@ class SignUp extends Component {
     };
 
     render() {
+        if (this.props.isLoggedIn) {
+            console.log(this.props.isLoggedIn);
+            return <Redirect to='/'/>
+        }
+
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white'>
@@ -50,7 +56,7 @@ class SignUp extends Component {
 
 
                     <div className="input-field">
-                        <button className="btn green lighten-1 z-depth-0">Login</button>
+                        <button className="btn green lighten-1 z-depth-0">Sign Up</button>
                     </div>
 
 
@@ -60,8 +66,14 @@ class SignUp extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.auth.loggedIn
+    }
+};
+
 const mapDispatchToProps = {
     signup: actions.signup
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

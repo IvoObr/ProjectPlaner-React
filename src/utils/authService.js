@@ -21,12 +21,10 @@ export const logout = () => {
         'x-auth': token || null
     };
 
-    if (token) {
-        return axios.delete(`${url}/users/token`, {headers}).then(response => {
-            localStorage.removeItem('user');
-            return response.data
-        });
-    }
+    return axios.delete(`${url}/users/token`, {headers}).then(response => {
+        localStorage.removeItem('user');
+        return response.data
+    });
 };
 
 export const signup = (user) => {

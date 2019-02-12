@@ -1,7 +1,7 @@
 import {loop, Cmd} from "redux-loop";
 import {actionTypes} from "../actions/actionTypes";
-import {actions} from "../actions/userActions";
-import {login, logout, signup} from "../../utils/userService";
+import {actions} from "../actions/authActions";
+import {login, logout, signup} from "../../utils/authService";
 
 let user = localStorage.getItem('user');
 if (user) {
@@ -10,7 +10,7 @@ if (user) {
 
 const initState = user ? {loggedIn: true, user} : {};
 
-const authReducer = (state = initState, action) => {
+export const authReducer = (state = initState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_USER:
             console.log('LOGIN_USER', action.payload.user);
@@ -24,9 +24,9 @@ const authReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.LOGIN_USER_SUCCESS:
-            console.log('LOGIN_USER_SUCCESS', action.payload.user);
+            console.log('LOGIN_USER_SUCCESS', action.payload.user.user);
             return loop(
-                {loggedIn: true, user: action.payload.user},
+                {loggedIn: true, user: action.payload.user.user},
                 Cmd.none
             );
         case actionTypes.LOGIN_USER_FAILED:
@@ -50,9 +50,9 @@ const authReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.LOGOUT_USER_FAILED:
-            console.log('LOGOUT_USER_FAILED', action.payload.user);
+            console.log('LOGOUT_USER_FAILED', action.payload);
             return loop(
-                {loggedIn: true, user: action.payload.user},
+                {loggedIn: true, user: action.payload},
                 Cmd.none
             );
 
@@ -67,8 +67,9 @@ const authReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.SIGNUP_USER_SUCCESS:
+            console.log(action.payload);
             return loop(
-                {loggedIn: true, user: action.payload.user},
+                {loggedIn: true, user: action.payload},
                 Cmd.none
             );
         case actionTypes.SIGNUP_USER_FAILED:
@@ -80,5 +81,3 @@ const authReducer = (state = initState, action) => {
             return state;
     }
 };
-
-export default authReducer;

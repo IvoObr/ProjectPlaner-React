@@ -17,11 +17,20 @@ body {
   min-height: 100%;
 }
 
-form{
+form {
   padding: 20px;
   margin-top: 60px;
   opacity: 0.9;
   border-radius: 1%;
+}
+
+.margin {
+  margin: 50px auto;
+}
+
+.padding-round {
+  border-radius: 1%;
+  padding: 20px;
 }
 
 form button, form h5{
