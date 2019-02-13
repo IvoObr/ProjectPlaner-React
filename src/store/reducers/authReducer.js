@@ -8,12 +8,11 @@ if (user) {
     user = JSON.parse(user);
 }
 
-const initState = user ? {loggedIn: true, user} : {};
+const initState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false};
 
 export const authReducer = (state = initState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_USER:
-            console.log('LOGIN_USER', action.payload.user);
             return loop(
                 {loggingIn: true, user: action.payload.user},
                 Cmd.run(login,
@@ -24,15 +23,13 @@ export const authReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.LOGIN_USER_SUCCESS:
-            console.log('LOGIN_USER_SUCCESS', action.payload.user.user);
             return loop(
-                {loggedIn: true, user: action.payload.user.user},
+                {loggingIn: false, loggedIn: true, user: action.payload.user.user, loginError: ''},
                 Cmd.none
             );
         case actionTypes.LOGIN_USER_FAILED:
-            console.log('LOGIN_USER_FAILED');
             return loop(
-                {},
+                {loggingIn: false, user: null, loginError: 'Login Error'},
                 Cmd.none
             );
         case actionTypes.LOGOUT_USER:
@@ -50,7 +47,6 @@ export const authReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.LOGOUT_USER_FAILED:
-            console.log('LOGOUT_USER_FAILED', action.payload);
             return loop(
                 {loggedIn: true, user: action.payload},
                 Cmd.none
@@ -67,14 +63,15 @@ export const authReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.SIGNUP_USER_SUCCESS:
-            console.log(action.payload);
             return loop(
-                {loggedIn: true, user: action.payload},
+                {loggingIn: false, loggedIn: true, user: action.payload.user.user},
                 Cmd.none
             );
         case actionTypes.SIGNUP_USER_FAILED:
+            const error =  action.payload.user.response.data.message || action.payload.user.response.data.errmsg
+            console.log(error);
             return loop(
-                {},
+                {loggingIn: false, signUpError: error},
                 Cmd.none
             );
         default:

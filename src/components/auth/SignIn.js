@@ -22,7 +22,6 @@ class SignIn extends Component {
 
     render() {
         if (this.props.isLoggedIn) {
-            console.log(this.props.isLoggedIn);
            return <Redirect to='/'/>
         }
 
@@ -44,6 +43,7 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
+                    {this.props.loginError ? <h3 className='red-text center-align'>{this.props.loginError}</h3> : <h3 className='white-text'>login Please</h3>}
                 </form>
             </div>
         );
@@ -52,7 +52,8 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
       return {
-          isLoggedIn: state.auth.loggedIn
+          isLoggedIn: state.auth.loggedIn,
+          loginError: state.auth.loginError
       }
 };
 

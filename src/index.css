@@ -28,6 +28,10 @@ form {
   margin: 50px auto;
 }
 
+.height-18 {
+  height: 18px;
+}
+
 .padding-round {
   border-radius: 1%;
   padding: 20px;

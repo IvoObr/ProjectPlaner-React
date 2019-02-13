@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
+import {connect} from "react-redux";
 
 
 class NavBar extends Component {
     render() {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const links = user ? <SignedInLinks user={user}/> : <SignedOutLinks/>;
+        const user = this.props.isLoggedIn;
+        const links = user ? <SignedInLinks/> : <SignedOutLinks/>;
         return (
             <nav className="nav-wrapper grey darken-3">
                 <div className="container">
@@ -20,4 +21,10 @@ class NavBar extends Component {
     }
 };
 
-export default NavBar;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.auth.loggedIn,
+    }
+};
+
+export default connect(mapStateToProps)(NavBar);
