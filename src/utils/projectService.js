@@ -19,4 +19,10 @@ export const createProject = (body) => {
         return axios.post(`${url}/projects`, body, {headers}).then(response => response.data);
 };
 
+export const getProject = (id) => {
+    const headers = {
+        'x-auth': getToken() || null
+    };
+    return axios.get(`${url}/projects/${id}`, {headers}).then(response => response.data);
+};
 

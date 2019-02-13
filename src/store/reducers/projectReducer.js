@@ -1,9 +1,9 @@
 import {loop, Cmd} from 'redux-loop';
 import {actions} from "../actions/projectActions";
-import {fetchProjects, createProject} from "../../utils/projectService";
+import {fetchProjects, createProject, getProject} from "../../utils/projectService";
 import {actionTypes} from "../actions/actionTypes";
 
-const initState = {projects: []};
+const initState = {projects: [], isProjectCreated: false};
 
 export const projectReducer = (state = initState, action) => {
     switch (action.type) {
@@ -17,9 +17,8 @@ export const projectReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.START_FETCH_PROJECTS_SUCCESS:
-            console.log('START_FETCH_PROJECTS_SUCCESS', action.payload);
             return loop(
-                {...state, projects: action.payload.data.projectDoc},
+                {...state, projects: action.payload.data.projectDoc, isProjectCreated: false},
                 Cmd.none
             );
         case actionTypes.START_FETCH_PROJECTS_FAILED:
@@ -38,11 +37,29 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.CREATE_PROJECT_SUCCESS:
             return loop(
-                {...state, projects: [...state.projects, action.payload.data.projectDoc]},
+                {...state, projects: [...state.projects, action.payload.data.projectDoc], isProjectCreated: true},
                 Cmd.none
             );
         case actionTypes.CREATE_PROJECT_FAILED:
             //todo not found component or notificaiton
+            return state;
+        case  actionTypes.GET_PROJECT:
+            return loop(
+                {...state},
+                Cmd.run(getProject,
+                    {
+                        successActionCreator: actions.getProjectSuccess,
+                        failActionCreator: actions.getProjectFailed,
+                        args: [action.payload.id]
+                    })
+            );
+        case actionTypes.GET_PROJECT_SUCCESS:
+            return loop(
+                {...state, projects: [action.payload.project.projectDoc]},
+                Cmd.none
+            );
+        case actionTypes.GET_PROJECT_FAILED:
+            //todo not found component
             return state;
         default:
             return state;

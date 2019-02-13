@@ -26,5 +26,16 @@ export const actions = {
         payload: {error}
     }),
 
-
+    getProject: (id) => ({
+        type: actionTypes.GET_PROJECT,
+        payload: {id}
+    }),
+    getProjectSuccess: (project) => ({
+        type: actionTypes.GET_PROJECT_SUCCESS,
+        payload: {project}
+    }),
+    getProjectFailed: (error) => ({
+        type: actionTypes.GET_PROJECT_FAILED,
+        payload: {error}
+    }),
 };

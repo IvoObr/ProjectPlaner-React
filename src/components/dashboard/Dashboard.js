@@ -12,7 +12,10 @@ class Dashboard extends Component {
 
     render() {
         const {projects} = this.props;
-        console.log('DASHBOARD', projects);
+        if (!Array.isArray(projects)) {
+            this.props.startFetchProject();
+        }
+
         return (
             <div className='dashboard container'>
                 <div className='row'>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {actions} from "../../store/actions/projectActions";
+import {Redirect} from "react-router-dom";
 
 class CreateProject extends Component {
     state = {
@@ -20,6 +21,10 @@ class CreateProject extends Component {
     };
 
     render() {
+        if (this.props.isProjectCreated) {
+            return <Redirect to='/'/>
+        }
+
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white'>
@@ -46,8 +51,14 @@ class CreateProject extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+        return {
+            isProjectCreated: state.project.isProjectCreated
+        }
+};
+
 const mapDispatchToProps = {
     createProject: actions.createProject
 };
 
-export default connect(null, mapDispatchToProps)(CreateProject);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
