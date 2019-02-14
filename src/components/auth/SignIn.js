@@ -28,7 +28,7 @@ class SignIn extends Component {
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white'>
-                    <h5 className="grey-text text-darken-3">Sign In</h5>
+                    <h5 className="grey-text text-darken-3">Login</h5>
 
                     <div className="input-field">
                         <label htmlFor="email">Email</label>
@@ -43,8 +43,12 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
-                    {this.props.loginError ? <h3 className='red-text center-align'>{this.props.loginError}</h3> : <h3 className='white-text'>login Please</h3>}
-                </form>
+                    {this.props.loginError ?  <div className='hideElement absolute center-align'>
+                            <i className="material-icons center-align large">error_outline</i>
+                            <p >Invalid username or password</p>
+                        </div>
+                        : null}
+                    </form>
             </div>
         );
     }

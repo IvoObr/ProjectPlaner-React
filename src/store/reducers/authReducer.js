@@ -43,7 +43,7 @@ export const authReducer = (state = initState, action) => {
             );
         case actionTypes.LOGOUT_USER_SUCCESS:
             return loop(
-                {},
+                {loggedIn: false},
                 Cmd.none
             );
         case actionTypes.LOGOUT_USER_FAILED:

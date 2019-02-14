@@ -2,8 +2,8 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 
-const SignedInLinks = (props) => {
-    const initials = props.initials;
+const SignedInLinks = () => {
+    const initials = JSON.parse(localStorage.getItem('user')).initials;
     return (
         <ul className="right">
             <li><NavLink to='/create'>New Project</NavLink></li>
@@ -14,10 +14,5 @@ const SignedInLinks = (props) => {
     )
 };
 
-const mapStateToProps = (state) => {
-    return {
-        initials: state.auth.user.initials
-    }
-};
 
-export default connect(mapStateToProps)(SignedInLinks);
+export default SignedInLinks;

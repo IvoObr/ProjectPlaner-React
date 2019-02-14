@@ -7,8 +7,9 @@ import {connect} from "react-redux";
 
 class NavBar extends Component {
     render() {
-        const user = this.props.isLoggedIn;
+        const user = this.props.isLoggedIn || JSON.parse(localStorage.getItem('user'));
         const links = user ? <SignedInLinks/> : <SignedOutLinks/>;
+
         return (
             <nav className="nav-wrapper grey darken-3">
                 <div className="container">

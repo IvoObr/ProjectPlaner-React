@@ -17,6 +17,46 @@ body {
   min-height: 100%;
 }
 
+.absolute {
+  margin: 20px;
+  background-color: orange;
+  width: 90%;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
+  border-radius: 1%;
+}
+
+.hideElement {
+  -moz-animation: cssAnimation 0s ease-in 5s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0s ease-in 5s forwards;
+  /* Opera */
+  animation: cssAnimation 0s ease-in 5s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  to {
+    width:0;
+    height:0;
+    overflow:hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    width:0;
+    height:0;
+    visibility:hidden;
+  }
+}
+
 form {
   padding: 20px;
   margin-top: 60px;
@@ -28,8 +68,8 @@ form {
   margin: 50px auto;
 }
 
-.height-18 {
-  height: 18px;
+.height-25 {
+  height: 25.75px;
 }
 
 .padding-round {

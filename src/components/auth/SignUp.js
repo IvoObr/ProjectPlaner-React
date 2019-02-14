@@ -57,12 +57,13 @@ class SignUp extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Sign Up</button>
                     </div>
-                    {this.props.loggingIn ?
-                        <div className="progress">
-                            <div className="indeterminate"></div>
-                        </div>
+                    {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div>
                         : <div className="height-18"></div>}
-                    {this.props.signUpError ? <p className='red-text center-align'>{this.props.signUpError}</p> : <p className='white-text'>SignUp Please</p>}
+                    {this.props.signUpError ?  <div className='hideElement absolute center-align'>
+                        <i className="material-icons center-align large">error_outline</i>
+                        <p >{this.props.signUpError}</p>
+                    </div>
+                        : null}
                 </form>
             </div>
         );

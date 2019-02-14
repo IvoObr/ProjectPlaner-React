@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
 import {connect} from "react-redux";
 import {actions} from "../../store/actions/projectActions";
@@ -23,7 +22,6 @@ class Dashboard extends Component {
                         <ProjectList projects={projects}/>
                     </div>
                     <div className="col s12 m5 offset-m1">
-                        <Notifications/>
                     </div>
                 </div>
             </div>
