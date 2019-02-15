@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {actions} from "../../store/actions/authActions";
 import {Redirect} from "react-router-dom";
+import Notifications from "./Notifications";
 
 class SignIn extends Component {
     state = {
@@ -43,11 +44,8 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
-                    {this.props.loginError ?  <div className='hideElement absolute center-align'>
-                            <i className="material-icons center-align large">error_outline</i>
-                            <p >Invalid username or password</p>
-                        </div>
-                        : null}
+                        {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div> : <div className="height-19"></div>}
+                        <Notifications doShow={this.props.loginError} message={'Invalid username or password'}/>
                     </form>
             </div>
         );
@@ -57,7 +55,8 @@ class SignIn extends Component {
 const mapStateToProps = (state) => {
       return {
           isLoggedIn: state.auth.loggedIn,
-          loginError: state.auth.loginError
+          loginError: state.auth.loginError,
+          loggingIn: state.auth.loggingIn,
       }
 };
 

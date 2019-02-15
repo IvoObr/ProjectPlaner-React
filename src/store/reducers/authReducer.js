@@ -10,6 +10,12 @@ if (user) {
 
 const initState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false};
 
+function extractError(error) {
+    if (error.includes('$email_1 dup key')) {
+        return error.split('"')[1] + ' is already registered.';
+    }
+};
+
 export const authReducer = (state = initState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_USER:
@@ -68,8 +74,9 @@ export const authReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.SIGNUP_USER_FAILED:
-            const error =  action.payload.user.response.data.message || action.payload.user.response.data.errmsg
-            console.log(error);
+            let error =  action.payload.user.response.data.message || action.payload.user.response.data.errmsg;
+            error = extractError(error);
+
             return loop(
                 {loggingIn: false, signUpError: error},
                 Cmd.none

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {actions} from "../../store/actions/authActions";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
+import Notifications from "./Notifications";
 
 class SignUp extends Component {
     state = {
@@ -40,30 +41,25 @@ class SignUp extends Component {
 
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id='password' onChange={this.handleChange}/>
+                        <input type="password" minLength="8" required id='password' onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" id='firstName' onChange={this.handleChange}/>
+                        <input type="text" id='firstName' minLength="1" required onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id='lastName' onChange={this.handleChange}/>
+                        <input type="text" id='lastName' minLength="1" required onChange={this.handleChange}/>
                     </div>
 
 
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Sign Up</button>
                     </div>
-                    {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div>
-                        : <div className="height-18"></div>}
-                    {this.props.signUpError ?  <div className='hideElement absolute center-align'>
-                        <i className="material-icons center-align large">error_outline</i>
-                        <p >{this.props.signUpError}</p>
-                    </div>
-                        : null}
+                    {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div> : <div className="height-19"></div>}
+                    <Notifications doShow={this.props.signUpError} message={this.props.signUpError}/>
                 </form>
             </div>
         );

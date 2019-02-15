@@ -17,17 +17,41 @@ body {
   min-height: 100%;
 }
 
-.absolute {
-  margin: 20px;
+.right-float {
+  float: right;
+  width: 80%;
   background-color: orange;
-  width: 90%;
+  height: 150px;
+  vertical-align: middle;
+}
+
+.left-float {
+  float: left;
+  width: 20%;
+  background-color: darkorange;
+  height: 150px;
+  vertical-align: middle;
+}
+
+.line-height-left {
+  line-height: 150px;
+}
+
+.line-height-right {
+  line-height: 100px;
+}
+
+
+.absolute {
+  opacity: 0.8;
+  margin: 20px auto;
+  width: 70%;
   position: absolute;
   top: 20%;
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: large;
+  font-size: x-large;
+  color: white;
   border-radius: 1%;
 }
 
@@ -68,8 +92,8 @@ form {
   margin: 50px auto;
 }
 
-.height-25 {
-  height: 25.75px;
+.height-19 {
+  height: 19px;
 }
 
 .padding-round {
