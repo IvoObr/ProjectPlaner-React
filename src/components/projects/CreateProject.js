@@ -52,9 +52,9 @@ class CreateProject extends Component {
 }
 
 const mapStateToProps = (state) => {
-        return {
-            isProjectCreated: state.project.isProjectCreated
-        }
+    return {
+        isProjectCreated: state.project.isProjectCreated
+    }
 };
 
 const mapDispatchToProps = {

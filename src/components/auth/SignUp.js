@@ -58,7 +58,9 @@ class SignUp extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Sign Up</button>
                     </div>
-                    {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div> : <div className="height-19"></div>}
+                    {this.props.loggingIn ? <div className="progress">
+                        <div className="indeterminate"></div>
+                    </div> : <div className="height-19"></div>}
                     <Notifications doShow={this.props.signUpError} message={this.props.signUpError}/>
                 </form>
             </div>

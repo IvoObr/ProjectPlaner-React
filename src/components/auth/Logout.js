@@ -5,14 +5,14 @@ import {Redirect} from "react-router-dom";
 
 class Logout extends Component {
     componentDidMount() {
-      this.props.logout();
+        this.props.logout();
     };
 
     render() {
-            return (
-                <Redirect to='/login'/>
-            )
-        }
+        return (
+            <Redirect to='/login'/>
+        )
+    }
 }
 
 const mapDispatchToProps = {

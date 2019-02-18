@@ -38,4 +38,31 @@ export const actions = {
         type: actionTypes.GET_PROJECT_FAILED,
         payload: {error}
     }),
+
+    deleteProject: (id) => ({
+        type: actionTypes.DELETE_PROJECT,
+        payload: {id}
+    }),
+    deleteProjectSuccess: (project) => ({
+        type: actionTypes.DELETE_PROJECT_SUCCESS,
+        payload: {project}
+    }),
+    deleteProjectFailed: (error) => ({
+        type: actionTypes.DELETE_PROJECT_FAILED,
+        payload: {error}
+    }),
+
+
+    editProject: (id, body) => ({
+        type: actionTypes.EDIT_PROJECT,
+        payload: {id, body}
+    }),
+    editProjectSuccess: (project) => ({
+        type: actionTypes.EDIT_PROJECT_SUCCESS,
+        payload: {project}
+    }),
+    editProjectFailed: (error) => ({
+        type: actionTypes.EDIT_PROJECT_FAILED,
+        payload: {error}
+    }),
 };

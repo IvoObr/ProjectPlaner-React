@@ -23,7 +23,7 @@ class SignIn extends Component {
 
     render() {
         if (this.props.isLoggedIn) {
-           return <Redirect to='/'/>
+            return <Redirect to='/'/>
         }
 
         return (
@@ -44,20 +44,22 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
-                        {this.props.loggingIn ? <div className="progress"> <div className="indeterminate"></div> </div> : <div className="height-19"></div>}
-                        <Notifications doShow={this.props.loginError} message={'Invalid username or password'}/>
-                    </form>
+                    {this.props.loggingIn ? <div className="progress">
+                        <div className="indeterminate"></div>
+                    </div> : <div className="height-19"></div>}
+                    <Notifications doShow={this.props.loginError} message={'Invalid username or password'}/>
+                </form>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-      return {
-          isLoggedIn: state.auth.loggedIn,
-          loginError: state.auth.loginError,
-          loggingIn: state.auth.loggingIn,
-      }
+    return {
+        isLoggedIn: state.auth.loggedIn,
+        loginError: state.auth.loginError,
+        loggingIn: state.auth.loggingIn,
+    }
 };
 
 const mapDispatchToProps = {

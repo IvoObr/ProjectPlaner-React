@@ -13,7 +13,7 @@ const Notifications = (props) => {
                     <p className='line-height-right'>{message}</p>
                 </div>
             </div>
-        : null
+            : null
     )
 };
 

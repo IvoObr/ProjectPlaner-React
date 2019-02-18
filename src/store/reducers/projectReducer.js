@@ -1,6 +1,6 @@
 import {loop, Cmd} from 'redux-loop';
 import {actions} from "../actions/projectActions";
-import {fetchProjects, createProject, getProject} from "../../utils/projectService";
+import {fetchProjects, createProject, getProject, deleteProject, editProject} from "../../utils/projectService";
 import {actionTypes} from "../actions/actionTypes";
 
 const initState = {projects: [], isProjectCreated: false};
@@ -22,7 +22,6 @@ export const projectReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.START_FETCH_PROJECTS_FAILED:
-            //todo not found component
             return state;
 
         case actionTypes.CREATE_PROJECT:
@@ -41,7 +40,6 @@ export const projectReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.CREATE_PROJECT_FAILED:
-            //todo not found component or notificaiton
             return state;
         case  actionTypes.GET_PROJECT:
             return loop(
@@ -59,7 +57,41 @@ export const projectReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.GET_PROJECT_FAILED:
-            //todo not found component
+            return state;
+        case  actionTypes.DELETE_PROJECT:
+            return loop(
+                {...state},
+                Cmd.run(deleteProject,
+                    {
+                        successActionCreator: actions.deleteProjectSuccess,
+                        failActionCreator: actions.deleteProjectFailed,
+                        args: [action.payload.id]
+                    })
+            );
+        case actionTypes.DELETE_PROJECT_SUCCESS:
+            return loop(
+                {...state, projects: []},
+                Cmd.none
+            );
+        case actionTypes.DELETE_PROJECT_FAILED:
+            return state;
+        case  actionTypes.EDIT_PROJECT:
+            return loop(
+                {...state},
+                Cmd.run(editProject,
+                    {
+                        successActionCreator: actions.editProjectSuccess,
+                        failActionCreator: actions.editProjectFailed,
+                        args: [action.payload.id, action.payload.body]
+                    })
+            );
+        case actionTypes.EDIT_PROJECT_SUCCESS:
+            console.log('EDITED PROJECT::: ', action.payload.project.projectDoc);
+            return loop(
+                {...state, projects: [action.payload.project.projectDoc]},
+                Cmd.none
+            );
+        case actionTypes.EDIT_PROJECT_FAILED:
             return state;
         default:
             return state;

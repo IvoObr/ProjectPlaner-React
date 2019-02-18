@@ -74,7 +74,7 @@ export const authReducer = (state = initState, action) => {
                 Cmd.none
             );
         case actionTypes.SIGNUP_USER_FAILED:
-            let error =  action.payload.user.response.data.message || action.payload.user.response.data.errmsg;
+            let error = action.payload.user.response.data.message || action.payload.user.response.data.errmsg;
             error = extractError(error);
 
             return loop(
