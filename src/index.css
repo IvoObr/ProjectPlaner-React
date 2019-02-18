@@ -90,10 +90,25 @@ form {
     border-radius: 1%;
 }
 
+.min-height {
+    min-height: 15em !important;
+}
+
+p, input, textarea, span, div {
+    overflow: hidden;
+}
+
+p {
+    word-break: break-all;
+}
+
 .margin {
     margin: 50px auto;
 }
 
+.margin-10 {
+    margin: 10px;
+}
 .height-19 {
     height: 19px;
 }

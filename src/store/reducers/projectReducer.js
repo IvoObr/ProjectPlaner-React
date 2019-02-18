@@ -3,7 +3,7 @@ import {actions} from "../actions/projectActions";
 import {fetchProjects, createProject, getProject, deleteProject, editProject} from "../../utils/projectService";
 import {actionTypes} from "../actions/actionTypes";
 
-const initState = {projects: [], isProjectCreated: false};
+const initState = {projects: [], isProjectCreated: false, isProjectSaved: false};
 
 export const projectReducer = (state = initState, action) => {
     switch (action.type) {
@@ -18,7 +18,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.START_FETCH_PROJECTS_SUCCESS:
             return loop(
-                {...state, projects: action.payload.data.projectDoc, isProjectCreated: false},
+                {...state, projects: action.payload.data.projectDoc, isProjectCreated: false, isProjectSaved: false},
                 Cmd.none
             );
         case actionTypes.START_FETCH_PROJECTS_FAILED:
@@ -36,7 +36,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.CREATE_PROJECT_SUCCESS:
             return loop(
-                {...state, projects: [...state.projects, action.payload.data.projectDoc], isProjectCreated: true},
+                {...state, projects: [...state.projects, action.payload.data.projectDoc], isProjectCreated: true, isProjectSaved: false},
                 Cmd.none
             );
         case actionTypes.CREATE_PROJECT_FAILED:
@@ -70,7 +70,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.DELETE_PROJECT_SUCCESS:
             return loop(
-                {...state, projects: []},
+                {...state, projects: [], isProjectSaved: false},
                 Cmd.none
             );
         case actionTypes.DELETE_PROJECT_FAILED:
@@ -88,7 +88,7 @@ export const projectReducer = (state = initState, action) => {
         case actionTypes.EDIT_PROJECT_SUCCESS:
             console.log('EDITED PROJECT::: ', action.payload.project.projectDoc);
             return loop(
-                {...state, projects: [action.payload.project.projectDoc]},
+                {...state, projects: [action.payload.project.projectDoc], isProjectSaved: true},
                 Cmd.none
             );
         case actionTypes.EDIT_PROJECT_FAILED:

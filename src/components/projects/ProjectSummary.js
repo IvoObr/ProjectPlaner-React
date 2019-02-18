@@ -5,8 +5,8 @@ const ProjectSummary = ({project}) => {
         <div className="card z-depth-0 project-summary" key={project._id}>
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">{project.title}</span>
-                <p>Posted by IvoO</p>
-                <p className="grey-text">Today Date</p>
+                <p>Posted by: {project.authorFirstName}</p>
+                <p className="grey-text">{project.createdAt}</p>
             </div>
         </div>
     )
