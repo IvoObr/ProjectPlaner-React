@@ -2,6 +2,18 @@
   "name": "project-planer-react",
   "version": "0.1.0",
   "private": true,
+  "description": "full stack project app",
+  "keywords": [
+    "MERN",
+    "Express",
+    "NodeJS",
+    "MongoDB",
+    "Mongoose",
+    "JavaScript",
+    "JsonWebToken",
+    "ReactJS"
+  ],
+  "author": "IvoObr",
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.7.0",
