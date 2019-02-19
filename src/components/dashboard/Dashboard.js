@@ -10,9 +10,15 @@ class Dashboard extends Component {
     }
 
     render() {
-        const {projects} = this.props;
+        const projects = this.props.projects;
         if (!Array.isArray(projects)) {
             this.props.startFetchProject();
+        }
+
+        if (projects.length < 1) {
+             return (
+                 <h4 className='fade-in-el white-text'>Dashboard is empty <i className="white-text material-icons line-height-left small">widgets</i></h4>
+             )
         }
 
         return (

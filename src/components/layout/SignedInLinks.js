@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {connect} from "react-redux";
 
 const SignedInLinks = () => {
     const initials = JSON.parse(localStorage.getItem('user')).initials;
@@ -9,7 +8,6 @@ const SignedInLinks = () => {
             <li><NavLink to='/create'>New Project</NavLink></li>
             <li><NavLink to='/logout'>Log Out</NavLink></li>
             <li><NavLink to='/' className='btn btn-floating blue lighten-1'>{initials}</NavLink></li>
-
         </ul>
     )
 };
