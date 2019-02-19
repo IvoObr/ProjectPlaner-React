@@ -28,6 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-eslint": "^9.0.0"
+    "babel-eslint": "^9.0.0",
+    "terser": "^3.16.1"
   }
 }
