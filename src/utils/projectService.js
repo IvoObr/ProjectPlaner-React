@@ -1,6 +1,6 @@
 import axios from 'axios';
+import url from './serviceConfing'
 
-const url = 'http://localhost:3002';
 const getToken = () => {
     return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
 };

@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const url = 'http://localhost:3002';
+import url from './serviceConfing'
 
 const saveTokenInSession = (response) => {
     const xAuth = response.request.getResponseHeader('x-auth');
