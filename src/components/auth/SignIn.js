@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {actions} from "../../store/actions/authActions";
 import {Redirect} from "react-router-dom";
 import Notifications from "./Notifications";
+import Loading from '../layout/Loading';
 
 class SignIn extends Component {
     state = {
@@ -44,9 +45,7 @@ class SignIn extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Login</button>
                     </div>
-                    {this.props.loggingIn ? <div className="progress">
-                        <div className="indeterminate"></div>
-                    </div> : <div className="height-19"></div>}
+                    <Loading loggingIn={this.props.loggingIn}/>
                     <Notifications doShow={this.props.loginError} message={'Invalid username or password'}/>
                 </form>
             </div>

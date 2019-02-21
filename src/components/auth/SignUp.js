@@ -3,6 +3,7 @@ import {actions} from "../../store/actions/authActions";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import Notifications from "./Notifications";
+import Loading from '../layout/Loading';
 
 class SignUp extends Component {
     state = {
@@ -58,9 +59,7 @@ class SignUp extends Component {
                     <div className="input-field">
                         <button className="btn green lighten-1 z-depth-0">Sign Up</button>
                     </div>
-                    {this.props.loggingIn ? <div className="progress">
-                        <div className="indeterminate"></div>
-                    </div> : <div className="height-19"></div>}
+                    <Loading loggingIn={this.props.loggingIn}/>
                     <Notifications doShow={this.props.signUpError} message={this.props.signUpError}/>
                 </form>
             </div>
