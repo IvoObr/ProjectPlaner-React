@@ -3,16 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from "./store/reducers/rootReducer";
 import {Provider} from 'react-redux'
 import {install} from 'redux-loop';
 
-const initialState = {auth: {}, project: {projects: []}};
+const initialState = {
+    auth: {},
+    project: {projects: []}
+};
 
-const store = createStore(rootReducer, initialState, install());
-
-// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// http://localhost:3000/?debug_session=session_string
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
+const store = createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(applyMiddleware(), install())
+);
 
 ReactDOM.render(
     <Provider store={store}>
