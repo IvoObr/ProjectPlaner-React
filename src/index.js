@@ -9,16 +9,10 @@ import rootReducer from "./store/reducers/rootReducer";
 import {Provider} from 'react-redux'
 import {install} from 'redux-loop';
 
-const initialState = {
-    auth: {},
-    project: {projects: []}
-};
-
 // http://localhost:3000/?debug_session=session_string
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
 const store = createStore(
     rootReducer,
-    initialState,
     composeEnhancers(applyMiddleware(), install())
 );
 
