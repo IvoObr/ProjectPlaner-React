@@ -9,6 +9,10 @@
 
 # testing
 /coverage
+/lcov-report
+lcov.info
+clover.xml
+coverage-final.json
 
 # production
 /build

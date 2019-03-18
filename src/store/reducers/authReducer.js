@@ -3,12 +3,7 @@ import {actionTypes} from "../actions/actionTypes";
 import {actions} from "../actions/authActions";
 import {login, logout, signup} from "../../utils/authService";
 
-let user = localStorage.getItem('user');
-if (user) {
-    user = JSON.parse(user);
-}
-
-const initState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false};
+const initState = {loggedIn: false, user: null, loginError: ''};
 
 function extractError(error) {
     if (error.includes('$email_1 dup key')) {

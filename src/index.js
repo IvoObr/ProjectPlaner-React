@@ -11,8 +11,22 @@ import {install} from 'redux-loop';
 
 // http://localhost:3000/?debug_session=session_string
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
+
+let user = localStorage.getItem('user');
+if (user) {
+    user = JSON.parse(user);
+}
+
+const authState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false};
+
+const initialState = {
+    auth: authState,
+    project: {projects: []}
+};
+
 const store = createStore(
     rootReducer,
+    initialState,
     composeEnhancers(applyMiddleware(), install())
 );
 
