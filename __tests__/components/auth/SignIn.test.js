@@ -6,6 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import {actions} from '../../../src/store/actions/authActions';
+import {mockStore} from '../../../src/utils/mockStore'
 
 configure({adapter: new Adapter()});
 
@@ -13,19 +14,9 @@ describe('<SignIn/>', () => {
     let wrapper = null;
     let props = null;
     let store = {};
-    const mockStore = configureStore();
-
-    const initialState = {
-        auth: {
-            loggedIn: true,
-            user: {},
-            loginError: ''
-        },
-        project: {}
-    };
 
     beforeEach(() => {
-        store = mockStore(initialState);
+        store = configureStore(mockStore);
         props = {
             login: actions.login,
             isLoggedIn: false

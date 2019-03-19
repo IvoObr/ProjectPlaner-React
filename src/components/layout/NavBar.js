@@ -4,7 +4,6 @@ import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import {connect} from "react-redux";
 
-
 class NavBar extends Component {
     render() {
         const user = this.props.isLoggedIn || JSON.parse(localStorage.getItem('user'));

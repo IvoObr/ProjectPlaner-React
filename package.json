@@ -32,6 +32,7 @@
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/serviceWorker.js",
+      "!__tests__/mockStore.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>/build/",
       "!<rootDir>/public/"
