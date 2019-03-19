@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn/> matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <form
+    className="white"
+    onSubmit={[Function]}
+  >
+    <h5
+      className="grey-text text-darken-3"
+    >
+      Login
+    </h5>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        onChange={[Function]}
+        type="email"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        onChange={[Function]}
+        type="password"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <button
+        className="btn green lighten-1 z-depth-0"
+      >
+        Login
+      </button>
+    </div>
+    <Loading />
+    <Notifications
+      message="Invalid username or password"
+    />
+  </form>
+</div>
+`;

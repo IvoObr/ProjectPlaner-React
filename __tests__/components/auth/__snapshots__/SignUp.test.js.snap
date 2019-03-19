@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUp/> matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <form
+    className="white"
+    onSubmit={[Function]}
+  >
+    <h5
+      className="grey-text text-darken-3"
+    >
+      Sign Up
+    </h5>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        onChange={[Function]}
+        type="email"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        minLength="8"
+        onChange={[Function]}
+        required={true}
+        type="password"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="firstName"
+      >
+        First Name
+      </label>
+      <input
+        id="firstName"
+        minLength="1"
+        onChange={[Function]}
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        htmlFor="lastName"
+      >
+        Last Name
+      </label>
+      <input
+        id="lastName"
+        minLength="1"
+        onChange={[Function]}
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <button
+        className="btn green lighten-1 z-depth-0"
+      >
+        Sign Up
+      </button>
+    </div>
+    <Loading />
+    <Notifications />
+  </form>
+</div>
+`;

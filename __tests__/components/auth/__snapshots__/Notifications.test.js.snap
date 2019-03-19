@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notifications/> matches snapshot 1`] = `
+<div
+  className=" absolute hideElement center-align"
+>
+  <div
+    className="left-float "
+  >
+    <i
+      className="white-text material-icons line-height-left large"
+    >
+      error_outline
+    </i>
+  </div>
+  <div
+    className="right-float"
+  >
+    <p
+      className="line-height-right"
+    >
+      testing with jest
+    </p>
+  </div>
+</div>
+`;

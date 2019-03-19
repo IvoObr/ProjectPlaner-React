@@ -14,7 +14,6 @@ describe('<App/>', () => {
     });
 
     it('should render App', () => {
-        console.log(wrapper.debug());
         expect(wrapper.find('BrowserRouter').length).toBe(1);
     });
 

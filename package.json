@@ -30,6 +30,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>/build/",
       "!<rootDir>/public/"
@@ -44,18 +46,13 @@
         "statements": 80
       }
     },
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "clover"
-    ]
+    "coverageReporters": ["json", "lcov", "text", "clover"]
   },
   "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "jest --watch",
+    "test": "jest --coverage",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   },
