@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignIn from '../../../src/components/auth/SignIn';
+import SignUp from '../../../src/components/auth/SignUp';
 import {configure, shallow, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
@@ -9,7 +9,7 @@ import {actions} from '../../../src/store/actions/authActions';
 
 configure({adapter: new Adapter()});
 
-describe('<SignIn/>', () => {
+describe('<SignUp/>', () => {
     let wrapper = null;
     let props = null;
     let store = {};
@@ -18,24 +18,24 @@ describe('<SignIn/>', () => {
     const initialState = {
         auth: {
             loggedIn: true,
-            user: {},
+                user: {},
             loginError: ''
         },
         project: {}
     };
 
-    beforeEach(() => {
-        store = mockStore(initialState);
-        props = {
-            login: actions.login,
-            isLoggedIn: false
-        };
+        beforeEach(() => {
+            store = mockStore(initialState);
+            props = {
+                signup: actions.signup,
+                isLoggedIn: false
+            };
 
-        wrapper = shallow(<SignIn.WrappedComponent {...props} store={store}/>);
+            wrapper = shallow(<SignUp.WrappedComponent {...props} store={store}/>);
     });
 
-    it('should render SignIn', () => {
-        expect(wrapper.find('div').length).toBe(4);
+    it('should render SignUp', () => {
+        expect(wrapper.find('div').length).toBe(6);
     });
 
     it('matches snapshot', () => {
@@ -46,13 +46,13 @@ describe('<SignIn/>', () => {
         let event = {
             target: {
                 id: 'email',
-                value: 'test'
+                value: 'test2'
             }
         };
 
         wrapper.instance().handleChange(event);
         let stateEmail = wrapper.state().email;
-        expect(stateEmail).toBe('test');
+        expect(stateEmail).toBe('test2');
     });
 
     it('handleSubmit should work', () => {
@@ -68,7 +68,7 @@ describe('<SignIn/>', () => {
 
     it('should redirect if logged in redirect to Home', () => {
         props.isLoggedIn = true;
-        wrapper = shallow(<SignIn.WrappedComponent {...props}/>);
+        wrapper = shallow(<SignUp.WrappedComponent {...props}/>);
         expect(wrapper.find('Redirect').length).toBe(1);
     });
 });
