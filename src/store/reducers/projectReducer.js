@@ -86,7 +86,6 @@ export const projectReducer = (state = initState, action) => {
                     })
             );
         case actionTypes.EDIT_PROJECT_SUCCESS:
-            console.log('EDITED PROJECT::: ', action.payload.project.projectDoc);
             return loop(
                 {...state, projects: [action.payload.project.projectDoc], isProjectSaved: true},
                 Cmd.none

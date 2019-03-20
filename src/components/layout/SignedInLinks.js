@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 const SignedInLinks = () => {
-    const initials = JSON.parse(localStorage.getItem('user')).initials;
+    const initials = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).initials;
     return (
         <ul className="right">
             <li><NavLink to='/create'>New Project</NavLink></li>

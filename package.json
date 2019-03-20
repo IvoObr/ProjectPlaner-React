@@ -32,7 +32,6 @@
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/serviceWorker.js",
-      "!__tests__/mockStore.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>/build/",
       "!<rootDir>/public/"
@@ -47,7 +46,12 @@
         "statements": 80
       }
     },
-    "coverageReporters": ["json", "lcov", "text", "clover"]
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ]
   },
   "scripts": {
     "dev": "react-scripts start",

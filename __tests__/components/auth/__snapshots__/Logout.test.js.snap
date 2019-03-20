@@ -2,6 +2,7 @@
 
 exports[`<Logout/> matches snapshot 1`] = `
 <Redirect
+  push={false}
   to="/login"
 />
 `;
