@@ -7,7 +7,7 @@ const initState = {projects: [], isProjectCreated: false, isProjectSaved: false}
 
 export const projectReducer = (state = initState, action) => {
     switch (action.type) {
-        case  actionTypes.START_FETCH_PROJECTS:
+        case actionTypes.START_FETCH_PROJECTS:
             return loop(
                 {...state},
                 Cmd.run(fetchProjects,
@@ -23,7 +23,6 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.START_FETCH_PROJECTS_FAILED:
             return state;
-
         case actionTypes.CREATE_PROJECT:
             return loop(
                 {...state},
@@ -41,7 +40,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.CREATE_PROJECT_FAILED:
             return state;
-        case  actionTypes.GET_PROJECT:
+        case actionTypes.GET_PROJECT:
             return loop(
                 {...state},
                 Cmd.run(getProject,
@@ -58,7 +57,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.GET_PROJECT_FAILED:
             return state;
-        case  actionTypes.DELETE_PROJECT:
+        case actionTypes.DELETE_PROJECT:
             return loop(
                 {...state},
                 Cmd.run(deleteProject,
@@ -75,7 +74,7 @@ export const projectReducer = (state = initState, action) => {
             );
         case actionTypes.DELETE_PROJECT_FAILED:
             return state;
-        case  actionTypes.EDIT_PROJECT:
+        case actionTypes.EDIT_PROJECT:
             return loop(
                 {...state},
                 Cmd.run(editProject,

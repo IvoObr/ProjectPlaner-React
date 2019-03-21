@@ -12,7 +12,6 @@ export const actions = {
         type: actionTypes.START_FETCH_PROJECTS_FAILED,
         payload: {error}
     }),
-
     createProject: (project) => ({
         type: actionTypes.CREATE_PROJECT,
         payload: {project}
@@ -25,7 +24,6 @@ export const actions = {
         type: actionTypes.CREATE_PROJECT_FAILED,
         payload: {error}
     }),
-
     getProject: (id) => ({
         type: actionTypes.GET_PROJECT,
         payload: {id}
@@ -38,7 +36,6 @@ export const actions = {
         type: actionTypes.GET_PROJECT_FAILED,
         payload: {error}
     }),
-
     deleteProject: (id) => ({
         type: actionTypes.DELETE_PROJECT,
         payload: {id}
@@ -51,8 +48,6 @@ export const actions = {
         type: actionTypes.DELETE_PROJECT_FAILED,
         payload: {error}
     }),
-
-
     editProject: (id, body) => ({
         type: actionTypes.EDIT_PROJECT,
         payload: {id, body}

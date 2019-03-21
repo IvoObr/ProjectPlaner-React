@@ -52,7 +52,6 @@ export const authReducer = (state = initState, action) => {
                 {loggedIn: true, user: action.payload},
                 Cmd.none
             );
-
         case actionTypes.SIGNUP_USER:
             return loop(
                 {loggingIn: true, user: action.payload.user},
