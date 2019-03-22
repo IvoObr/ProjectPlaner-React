@@ -73,15 +73,15 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
-    "babel-jest": "^24.5.0",
+    "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
-    "jest": "^24.5.0",
+    "jest": "^23.6.0",
     "redux-mock-store": "^1.5.3",
     "terser": "^3.16.1"
   },
