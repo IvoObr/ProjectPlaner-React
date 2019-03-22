@@ -1,7 +1,6 @@
 import {projectReducer} from '../../../src/store/reducers/projectReducer';
 import {mockStore} from '../../../src/utils/mockStore';
 import {actions} from '../../../src/store/actions/projectActions';
-import {authReducer} from '../../../src/store/reducers/authReducer';
 
 describe('projectReducer', () => {
 

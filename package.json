@@ -1,6 +1,6 @@
 {
   "name": "project-planer-react",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "description": "full stack project app",
   "keywords": [
@@ -52,13 +52,17 @@
       "lcov",
       "text",
       "clover"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/jestCssMock.js"
+    }
   },
   "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   },

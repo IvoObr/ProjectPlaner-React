@@ -1,1 +1,0 @@
-export default 'https://project-planer-node-js.herokuapp.com';

@@ -68,6 +68,8 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
+    if (state.length) state = {...state[0]};
+
     return {
         isLoggedIn: state.auth.loggedIn,
         loggingIn: state.auth.loggingIn,

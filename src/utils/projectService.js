@@ -1,5 +1,5 @@
 import axios from 'axios';
-import url from './serviceConfing'
+import url from './axiosConfing'
 
 const getToken = () => {
     return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;

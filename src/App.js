@@ -6,7 +6,7 @@ import ProjectDetails from "./components/projects/ProjectDetails";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreateProject from "./components/projects/CreateProject";
-import {PrivateRoute} from "./components/privateRoute/PrivateRoute";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import {NotFound} from "./components/auth/NotFound";
 import Logout from "./components/auth/Logout";
 

@@ -17,14 +17,14 @@ if (user) {
     user = JSON.parse(user);
 }
 
-const authState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false};
+const authState = user ? {loggedIn: true, user, loginError: ''} : {loggedIn: false,  loginError: ''};
 
 const initialState = {
     auth: authState,
     project: {projects: []}
 };
 
-const store = createStore(
+export const store = createStore(
     rootReducer,
     initialState,
     composeEnhancers(applyMiddleware(), install())

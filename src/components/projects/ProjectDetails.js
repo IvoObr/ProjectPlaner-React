@@ -81,6 +81,8 @@ class ProjectDetails extends Component {
 
 
 const mapStateToProps = (state) => {
+    if (state.length) state = {...state[0]};
+
     return {
         project: state.project.projects,
         isProjectSaved: state.project.isProjectSaved

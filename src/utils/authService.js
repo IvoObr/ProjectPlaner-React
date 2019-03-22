@@ -1,5 +1,5 @@
 import axios from 'axios';
-import url from './serviceConfing'
+import url from './axiosConfing'
 
 const saveTokenInSession = (response) => {
     const xAuth = response.request.getResponseHeader('x-auth');
@@ -20,10 +20,12 @@ export const logout = () => {
         'x-auth': token || null
     };
 
-    return axios.delete(`${url}/users/token`, {headers}).then(response => {
-        localStorage.removeItem('user');
-        return response.data
-    });
+    if (token) {
+        return axios.delete(`${url}/users/token`, {headers}).then(response => {
+            localStorage.removeItem('user');
+            return response.data
+        });
+    }
 };
 
 export const signup = (user) => {
