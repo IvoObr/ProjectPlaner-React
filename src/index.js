@@ -10,7 +10,7 @@ import {Provider} from 'react-redux'
 import {install} from 'redux-loop';
 
 // http://localhost:3000/?debug_session=session_string
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let user = localStorage.getItem('user');
 if (user) {

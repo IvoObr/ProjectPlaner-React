@@ -36,8 +36,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    if (state.length) state = {...state[0]};
-
     return {
         projects: state.project.projects
     }
